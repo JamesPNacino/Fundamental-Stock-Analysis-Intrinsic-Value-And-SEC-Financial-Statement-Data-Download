@@ -108,7 +108,7 @@ for (i in 1:length(ticker)){
       counter <- counter + 1
       
       #Get the ticker's stock price and append date column
-      tempPrice_df <- try(getSymbols(ticker[i], from=Dates[x], auto.assign = FALSE), silent = TRUE)
+      tempPrice_df <- try(getSymbols(ticker[i], from=Dates[x], auto.assign = FALSE, src='google'), silent = TRUE)
       tempPrice_df <- data.frame(tempPrice_df)
       tempPrice_df$Date <- rownames(tempPrice_df)
       rownames(tempPrice_df) <- NULL
@@ -158,7 +158,7 @@ for (i in 1:length(ticker)){
       counter <- counter + 1
       
       #Get the ticker's stock price and append date column
-      tempPrice_df <- try(getSymbols(ticker[i], from=Dates[x], auto.assign = FALSE), silent = TRUE)
+      tempPrice_df <- try(getSymbols(ticker[i], from=Dates[x], auto.assign = FALSE, src='google'), silent = TRUE)
       tempPrice_df <- data.frame(tempPrice_df)
       tempPrice_df$Date <- rownames(tempPrice_df)
       rownames(tempPrice_df) <- NULL
@@ -256,12 +256,12 @@ for (i in 1:length(ticker)){
         
         #Get the most current closing stock price and stock price for the previous years
         tempClosePrice <- ClosePrice_df[ClosePrice_df$Ticker==ticker[i],]
-        recentClosePrice <- try(getSymbols(ticker[i], from=Sys.Date()-5, auto.assign = FALSE), silent = TRUE)
+        recentClosePrice <- try(getSymbols(ticker[i], from=Sys.Date()-5, auto.assign = FALSE, src='google'), silent = TRUE)
         recentClosePrice <- data.frame(recentClosePrice)
         recentClosePrice$Date <- rownames(recentClosePrice) 
         row.names(recentClosePrice) <- NULL
         MostRecentClosePrice <- recentClosePrice[nrow(recentClosePrice),4]
-        MostRecentCloseDate <- recentClosePrice[nrow(recentClosePrice),7]
+        MostRecentCloseDate <- recentClosePrice[nrow(recentClosePrice),ncol(recentClosePrice)]
 
         #Calculate EPS ttm for each of the years we have available
         EPS_ttm <- round(temp_ttm_df$Value / temp_ttm_df2$Value, digits = 2)
@@ -307,7 +307,7 @@ for (i in 1:length(ticker)){
         PEGrowthRate <- round((OneYearValue / temp.df$EPS[1]) - 1, digits = 3)
         
         #Get the close price of the stock
-        tempPrice_df <- data.frame(try(getSymbols(ticker[i], from=Sys.Date()-5, auto.assign = FALSE), silent = TRUE))
+        tempPrice_df <- data.frame(try(getSymbols(ticker[i], from=Sys.Date()-5, auto.assign = FALSE, src='google'), silent = TRUE))
         colnames(tempPrice_df) <- sub(".+\\.", "", colnames(tempPrice_df))
         ClosePrice <- tempPrice_df$Close[nrow(tempPrice_df)]
         
@@ -381,7 +381,7 @@ for (i in 1:length(ticker)){
         for (x in 1:DCF_YearsProjection){
                 if (x==1){ #When i is equal to 1 then do not include the growth decline rate
                         tempYR1 <- maxCashFlow$Value[1] * (1 + (DCFGrowthRate * MarginSafety))
-                        tempPrice_df <- data.frame(try(getSymbols(ticker[i], from=Sys.Date()-5, auto.assign = FALSE), silent = TRUE))
+                        tempPrice_df <- data.frame(try(getSymbols(ticker[i], from=Sys.Date()-5, auto.assign = FALSE, src='google'), silent = TRUE))
                         colnames(tempPrice_df) <- sub(".+\\.", "", colnames(tempPrice_df))
                         ClosePrice <- tempPrice_df$Close[nrow(tempPrice_df)]
                         FCF <- maxCashFlow$Value[1]

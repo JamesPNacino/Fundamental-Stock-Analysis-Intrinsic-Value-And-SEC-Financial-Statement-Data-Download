@@ -3,8 +3,8 @@ title: Fundamental Stock Analysis
 account: jnacino
 server: shinyapps.io
 appId: 165818
-bundleId: 757458
+bundleId: 884781
 url: https://jnacino.shinyapps.io/fundamental_stock_analysis/
-when: 1490165830.25785
+when: 1498619033.80877
 asMultiple: FALSE
 asStatic: FALSE
