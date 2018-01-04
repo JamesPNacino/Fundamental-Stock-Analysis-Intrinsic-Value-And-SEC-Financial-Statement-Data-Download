@@ -1,4 +1,7 @@
 # Fundamental-Stock-Analysis-Intrinsic-Value
+
+### Summary 
+
 In this application, we will be analyzing the intrinsic value of stocks using various valuation methods and financial ratios. Investors such as Warren Buffet and Benjamin Graham are just a few examples of people who use a fundamental analysis approach to value stocks based upon their intrinsic value. Below I will talk about how this app works and the motivation for this type of automated analyses:
 
 [**Click Here to Go Straight to the App!!**](https://jnacino.shinyapps.io/fundamental_stock_analysis/)
