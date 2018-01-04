@@ -5,6 +5,15 @@ In this application, we will be analyzing the intrinsic value of stocks using va
 
 I have taken a class from [https://www.udemy.com/value-investing-bootcamp-how-to-invest-wisely] which goes over how to go over fundamental stock analysis like those legendary investors mentioned above. I needed a way to apply the things learned in this course without having to do manual calculations for every single stock to come up with an intrinsic value estimate. Before using this app it is highly reccommend that you take the class on udemy which was referenced earlier in this paragraph. If you navigate to Steps 2 and 3, that will explain the fundamental analysis and valuation methods that are provided by the application.
 
+### R Packages
+
+To implement this project yourself you must download the following packages:
+
+* quantmod
+* shiny
+* reshape
+* ggplot2
+
 ## Value Investing Process
 
 ### Step 1: Initial Screening - Manual Process
