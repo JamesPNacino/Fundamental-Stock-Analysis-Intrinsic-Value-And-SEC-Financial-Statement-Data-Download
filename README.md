@@ -14,6 +14,10 @@ To implement this project yourself you must download the following packages:
 * reshape
 * ggplot2
 
+### Run
+
+To implement this project yourself you must in the R environment have 'ui.R' and 'server.R' open. Then if you have the shiny package installed you will be able to launch the web application on a browser window.
+
 ## Value Investing Process
 
 ### Step 1: Initial Screening - Manual Process
