@@ -73,15 +73,13 @@ o	Step 3: Take the cash from operating activities and subtract it with the capit
 
 	$53,944 - $7,207 = $46,737
 
-o	Step 4: Then we decide a growth rate of the company for the next five years. This can be analysts’ estimates or your own estimate. If analysts decide that the company will grow at 15.37% each year for the next five years, then use a 25% margin of safety. This means that the conservative growth rate will be (15.37 * (1 - .25)) = 11.53%. **In this application, the automatic selection option is to have the growth rate at a negative value. All this means is that if the growth rate is negative as shown on the app, the calculation for the growth rate value is as follows. The slope of the line of best fit through all historic cash flows is calculated. A predicted free cash flow value is predicted based on this slope one year into the future. Then the growth rate is the percent change of the most recent free cash flow (ttm) value to the predicted free cash flow value one year into the future.**
+o	Step 4: Then we decide a growth rate of the company for the next five years. This can be analysts’ estimates or your own estimate. If analysts decide that the company will grow at 15.37% each year for the next five years, then it is recommended to use a 25% margin of safety. This means that a conservative growth rate should be (15.37 * (1 - .25)) = 11.53%. 
 
-o	Step 5: As a company grows in size it is hard to maintain a high growth rate, so each year, the conservative growth rate will decline by 5% each year.
-
-o	Step 6: So we take our free cash flow of $46,737 and then we multiply it by the conservative growth rate of 11.53% to get the free cash flow one year from now: 
+o	Step 5: So we take our free cash flow of $46,737 and then we multiply it by the conservative growth rate of 11.53% to get the free cash flow one year from now: 
 
 	(46737 * 1.1153) = $52,125 FCF for year one.
 
-o	Step 7: Then we discount this future cash flow value using 10% to get the NPV of the first year’s free cash flow
+o	Step 6: Then we discount this future cash flow value using 10% to get the NPV of the first year’s free cash flow
 
 	$52,125 / (1 + .10)^1 = $47,386 NPV FCF
 o	Step 7: Then every year after the first year, we apply the growth decline rate of 5%. So calculating the second year free cash flow:
@@ -102,12 +100,12 @@ o	Step 11: To calculate the terminal value using the the growth in perpetuity ap
 
 	$1,129,284 = $76,747.49 * (1 + .03) / (.1 - .03) 
 
-o	Step 11: Now calculate the net present value of the terminal value. The exponent is the last year that you calculated for the terminal value.
+o	Step 12: Now calculate the net present value of the terminal value. The exponent is the last year that you calculated for the terminal value.
 
 	$1,129,284 / (1 + .1)^5 = $701,196
 
-o	Step 12: Now find the cash and cash equivalents on the balance sheet, in this example we will use, $41,350. Now find long-term debt balance on the balance sheet, in this example, we will use $16,962.
+o	Step 13: Now find the cash and cash equivalents on the balance sheet, in this example we will use, $41,350. Now find long-term debt balance on the balance sheet, in this example, we will use $16,962.
 
-o	Step 13: Take the following inputs and add (subtract debt though) to get the company value using the DCF model.  
+o	Step 14: Take the following inputs and add (subtract debt though) to get the company value using the DCF model.  
  
-o	Step 14:  You would then take the company value and then divide it by the number of shares outstanding, which will give you the value of the stock price using the DCF model.
+o	Step 15:  You would then take the company value and then divide it by the number of shares outstanding, which will give you the value of the stock price using the DCF model.
