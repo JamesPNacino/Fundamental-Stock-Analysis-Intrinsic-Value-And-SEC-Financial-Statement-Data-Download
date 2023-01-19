@@ -1,88 +1,41 @@
-# Fundamental-Stock-Analysis-Intrinsic-Value
+# Fundamental-Stock-Analysis-Intrinsic-Value-And-SEC-Financial-Statement-Data-Download
 
-### Summary 
+## Summary 
 
-In this application, we will be analyzing the intrinsic value of stocks using various valuation methods and financial ratios. Investors such as Warren Buffet and Benjamin Graham are just a few examples of people who use a fundamental analysis approach to value stocks based upon their intrinsic value. Below I will talk about how this app works and the motivation for this type of automated analyses:
+In this application, we will be analyzing the intrinsic value of stocks using various valuation methods. Investors such as Warren Buffet and Benjamin Graham are just a few examples of people who use a fundamental analysis approach to value stocks based upon their intrinsic value. Below I will talk about how this app works and the motivation for this type of automated analyses:
 
-[**Click Here to Go Straight to the App!!**](https://jnacino.shinyapps.io/fundamental_stock_analysis/)
+[**Click Here to Go Straight to the App!!**](https://www.financinos.com/)
 
-I have taken a class from [https://www.udemy.com/value-investing-bootcamp-how-to-invest-wisely] which goes over how to go over fundamental stock analysis like those legendary investors mentioned above. I needed a way to apply the things learned in this course without having to do manual calculations for every single stock to come up with an intrinsic value estimate. Before using this app it is highly reccommend that you take the class on udemy which was referenced earlier in this paragraph. If you navigate to Steps 2 and 3, that will explain the fundamental analysis and valuation methods that are provided by the application.
+I have taken a class from [https://www.udemy.com/value-investing-bootcamp-how-to-invest-wisely] which goes over how to go over fundamental stock analysis like those legendary investors mentioned above. The two main valuation methods used in this app are the Discounted Cash Flow and Price-Earning Multiple mode. I needed a way to apply the things learned in this course without having to do manual calculations for every single stock to come up with an intrinsic value estimate. Before using this app it is highly reccommend that you take the class on udemy which was referenced earlier in this paragraph. If you navigate to Steps 2 and 3, that will explain the fundamental analysis and valuation methods that are provided by the application.
+
+Along with stock analysis, the data from the app I created is sourced directly from [**SEC's EDGAR data files**] (https://www.sec.gov/dera/data/financial-statement-data-sets.html). There was a lot of data cleaning and formatting which happened prior to using the data for my web app. The only data that is not from the SEC is stock price data, that was via a Yahoo finance API. Another function of this application is for downloading cleaned data of these Edgar data files. In my application I provided an API and CSV download. 
+
+## Cleaning Data Process - Using the R Programming Language
 
 ### R Packages
 
-To implement this project yourself you must download the following packages:
+To implement this cleaning process yourself you must download the following packages:
 
-* quantmod
-* shiny
-* reshape
-* ggplot2
+* DBI
+* RSQLite
+* readXL
+* data.table
+* XML
+* xml2
+* httr
 
-### Run
+### R Scripts - For more info read the README.md in the 'RScripts' folder
 
-To implement this project yourself you must in the R environment have 'ui.R' and 'server.R' open. Then if you have the shiny package installed you will be able to launch the web application on a browser window.
+* Get_datav3.R
+* Get_datav3_loop.R
+* Final_cleanv3.R
+* Create_BalanceSheetv3.R
+* Create_CashFlowStatementv3.R
+* Create_IncomeStatementv3.R
 
-## Value Investing Process
+## Value Investing Process - Using Python Programming Language
 
-### Step 1: Initial Screening - Manual Process
-
-An initial stock screener can be done on Google finance, yahoo finance, or many other tools. There are thousands upon thousands of companies in which you can buy stock. You need to use an initial stock screener to narrow down your search. Use the following filtering criteria to narrow down more specific stocks:
-
-1. Filter for companies with return on equity higher than 15%
-Return on equity tells us how efficiently a company uses its assets to generate earnings. The higher the return on equity, the better. This is calculated by:
-Net Income / Shareholder’s Equity = Return on Equity
-
-2. Filter for companies with a current ratio higher than 2%
-If the current ratio is greater than one then the company has the ability to pay it’s short term liabilities with its short term assets, because the company has more short term assets than debt. You want a company with more money than bills to pay. If the ratio is less that one, then the company may be vulnerable against any surprising events in the economy and will be hard for them to pay off their bills. To calculate, it is found in the balance sheet:
-Current assets / current liabilities = Current ratio
-
-3. Filter for a debt to equity ratio lower than 0.5 or 50%
-This ratio indicates how much debt a company is in relation to its shareholder’s equity. High debt levels are a huge warning sign as it relies on debt to finance its growth. If a company has an increasing debt to equity ratio, then the investment may become risky because the company cannot meet its debt obligations. Calculated by:
-Long-term debt / Shareholder’s equity = debt to equity ratio 
-
-### Step 2: Fundamental Analysis - [**Use the App for Fundamental Analysis**](https://jnacino.shinyapps.io/fundamental_stock_analysis/)
-
-1. **Are earnings per share stable or growing over time?**
-Earnings per share is the profit that a company makes per share of stock. A growing EPS is better than it decreasing or stable. Calculated by:
-Net Income / Shares Outstanding = EPS 
-
-2. **How Price Earnings (PE Ratio) compared to the rest of the industry?**
-
-P/E ratio is the price that you will pay for the stock per dollar of income. This ratio generally differs greatly per industry. A low P/E ratio compared to other stocks in that industry generally means that the shares are trading at a value.
-Calculated by:
-Price per Share / Earnings per share = P/E ratio
-
-3. **Are free cash flows stable or increasing over time?**
-
-FCF is used for paying debts, dividends, buybacks, or investing on growth for the company. Free cash flow is a very immportant metric for companies as it is hard for companies to manipulate their free cash flows. Also, cash is king!!! Calculated by taking: 
-cash from operating activities – cash from capital expenditures
-
-4. **Are cash and cash equivalents stable or increasing over time?**
-
-Reported on the balance sheet. An increasing value means that there is more cash reserves over time. Even though this metric is decreasing, the company can just be investing the reserve money to improve the business.
-
-5. **Is book value per share steadily growing over time?**
-
-This shows how much money, you would receive for your shares of stock if the company liquidates, selling all of its assets after paying off its debts. You want to look for companies with increasing book value per share because they are companies that are creating value. To calculate:
-Shareholder’s Equity / Shares Outstanding = Book value per share
-
-6. **Is the net margin stable or growing over time?**
-
-Net margin is what percent of sales is profit. This figure differs greatly from industry to industry. If a company is able to sustain high profit margins, then the company may have a strong brand name or patented products that competitors can’t compete with. The higher the net margin, the better Calculated by:
-Net Income/ Revenue = Net Margin or profit margin
-
-7. **Has the return on equity been consistently high?**
-
-Return on equity tells us how efficiently a company uses its assets to generate earnings. The higher the return on equity, the better. This is calculated by:
-Net Income / Shareholder’s Equity = Return on Equity
-
-8. **Has debt-to-equity been consistently low or decreasing?** 
-
-This ratio indicates how much debt a company in relation to its shareholder’s equity. High debt levels are a huge warning sign as it relies on debt to finance its growth. If a company has an increasing debt to equity ratio, then the investment may become risky because the company cannot meet its debt obligations. Calculated by:
-Long-term debt / Shareholder’s equity = debt to equity ratio 
-
-### Step 3: Valuation - [**Use the App for Valuation Analysis**](https://jnacino.shinyapps.io/fundamental_stock_analysis/)
-
-In this step, we calculate the intrinsic value of a stock based upon two various methods. The price earnings multiple valuation method and the Discounted Cash flow valuation method.
+* The code for the Flask web application is found in the 'web_app' folder
 
 1. **Price Earnings Multiple Valuation Method**
 
@@ -143,7 +96,7 @@ o	Step 9: Continue the process till the year 5 FCF and NPV FCF is calculated.
  
 o	Step 10: Take the value of the year 5 FCF, $76,747.49, then you would need to calculate the terminal value which is the company’s long-term valuation as the company approaches perpetuity.
 
-o	Step 11: To calculate the terminal value using the Gordon Growth Model you also need to come up with a long-term cash flow growth rate. The long-term growth rate for cash flow in the US economy is around 3%, so we will plug that value in the following formula.
+o	Step 11: To calculate the terminal value using the the growth in perpetuity approach you also need to come up with a long-term cash flow growth rate. The long-term growth rate for cash flow in the US economy is around 3%, so we will plug that value in the following formula.
 
 	Terminal value = projected cash flow for final year (1 + long-term growth rate) / (discount rate - long-term growth rate)
 
