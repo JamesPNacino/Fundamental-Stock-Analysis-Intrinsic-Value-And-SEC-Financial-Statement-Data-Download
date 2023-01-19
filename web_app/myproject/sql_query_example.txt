@@ -1,0 +1,10 @@
+SELECT *
+FROM financial
+INNER JOIN company ON company.ein_id = financial.ein_id
+WHERE instance = "msft";
+
+when setting up db for the first time, you have to create it via models.py first, then insert data
+
+db init
+db migrate - m "created table"
+db ubgrade

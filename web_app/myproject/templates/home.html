@@ -1,0 +1,25 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="container">
+	<div class="jumbotron">
+	<h1 class="display-4">Welcome to Financinos</h1>
+	<hr class="my-4">
+	<p class="lead">The purpose of this web application is for downloading financial statement data and automating valuation models which estimate the intrinsic value of a stock price. This database contains cleaned data from SEC's EDGAR.
+	Using this database, there are two ways in which you can download data:</p>
+	<ul>
+		<li><p><a href="{{url_for('downloaddata_views.DOWNLOAD_DATA')}}"><b>Download data via CSV or API</b></a></p></li>
+	</ul>
+	<p class="lead">Two different valuation techniques used to find a company's true stock price value in this application and a compounding interest calculator:</p>
+	<ol>
+		<li><p><a href="{{url_for('downloaddata_views.VALUATION_MODELS_DCF')}}"><b>Discounted Cash Flow Model</b></a></p></li>
+		<li><p><a href="{{url_for('downloaddata_views.VALUATION_MODELS_PE')}}"><b>Price-Earnings Multiple Model</b></a></p></li>
+		<li><p><a href="{{url_for('downloaddata_views.COMPOUNDING_INTEREST')}}"><b>Compounding Interest Calculator</b></a> - On top of using the two models to find value stocks. Use the calculator to discover the earnings power of holding on to stocks long term</li>
+	</ol>
+	  <p class="lead">Providing access to financial data on thousands of United States companies. With quarterly and annual data available for downloading and analysis, this app is completely free to use</p>
+
+
+	</div>
+</div>
+
+
+{% endblock %}

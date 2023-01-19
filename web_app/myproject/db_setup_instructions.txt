@@ -1,0 +1,4 @@
+#first navigate to path where app.py is and run these in the console
+flask db init
+flask db migrate -m "created x table"
+flask db upgrade

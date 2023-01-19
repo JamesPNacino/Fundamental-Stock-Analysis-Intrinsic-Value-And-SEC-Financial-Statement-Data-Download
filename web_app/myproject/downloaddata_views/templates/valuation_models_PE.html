@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="container">
+<div class="jumbotron">
+<p class="h3">Stock Price Valuation via the Price-Earnings Multiple Model</p>
+<hr class="my-4">
+<p class="lead">The Price-Earnings Multiple model is a valuation model that projects earnings per share to determine the value of an investment.</p>
+{% if message %}
+<div class="alert alert-danger" role="alert">
+<p>{{message}}</p>
+</div>
+{% endif %}
+  <form method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+      <p align="left">{{ form.ticker.label }} {{ form.ticker() }}
+      <span style="float:right;">{{ form.fiscal_period.label }} {{ form.fiscal_period() }}</span></p>
+      <p align="left">{{ form.years_project.label }} {{ form.years_project() }}
+      <span style="float:right;">{{ form.growth_rte.label }} {{ form.growth_rte() }}</span></p>
+      <p align="left">{{ form.discount_rte.label }} {{ form.discount_rte() }}</p>
+      <span style="float:right;">{{ form.submit() }}<span style="float:right;">
+  </form>
+
+</div>
+</div>
+
+
+{% endblock %}

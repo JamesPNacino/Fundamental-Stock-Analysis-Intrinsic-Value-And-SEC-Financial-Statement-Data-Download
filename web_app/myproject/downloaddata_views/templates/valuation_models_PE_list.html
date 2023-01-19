@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div class="jumbotron">
+  <p class="h3">Here is the company information and price-earnings multiple valuation for your inputted stock ticker</p>
+  <hr class="my-4">
+    <p class="lead">Company Name: {{company.name[0]}}</p>
+    <p class="lead">Stock Ticker: {{company.instance[0]}}</p>
+    <p class="lead">EIN Number: {{company.ein_id[0]}}</p>
+    <p class="lead">Address: {{company.bas1[0]}}, {{company.cityba[0]}}, {{company.stprba[0]}} {{company.countryba[0]}} {{company.zipba[0]}}</p>
+<p class="lead">Fiscal data period used for analysis: {{fiscal_period}}</p>
+<p class="lead">Stock price as of {{start_date}} (when the {{fiscal_period}} data was released): <b>${{current_stock_price}}</b></p>
+<p class="lead">True value of the stock as of {{start_date}}, based on the PE model: <b>${{npv_valuation}}</b></p>
+<p class="lead">Stock price value in {{years_project}} years from {{start_date}}, based on the PE model: ${{valuation}}</p>
+<p class="lead"><b>{{valuation_message}}</b></p>
+<div align="right"><form action="{{url_for('downloaddata_views.VALUATION_MODELS_PE')}}">
+      <input type="submit" value="New Query" />
+      </form>
+</div>
+</div>
+
+<div class="jumbotron">
+<p class="h4">Steps and calculations used to arrive at the valuation</p>
+<hr class="my-4">
+<p class="lead">1. Input variables and calculations used to arrive at the valuation</p>
+<p>Earnings Per Share (EPS) Growth Rate: {{growth_rate}}</p>
+<p>Discount Rate: {{discount_rate}}</p>
+<p><b>PE ratios (over last 5 years, if available):</b> {{pe_qtr}}</p>
+<p>Average PE ratio: {{pe_avg}}</p>
+<p>EPS twelve trailing months (ttm) or last four available quarters, if available: {{eps_sum}}</p>
+
+
+<p class="lead">2. The following table shows the projected earnings per share (ttm) over the following years. It also shows the formulas used to calculate EPS.</p>
+</div>
+
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Year</th>
+    		<th>Earnings Per Share (EPS)</th>
+        <th>EPS formula</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for index,value in PE_df.iterrows() %}
+        <tr>
+          <td>{{ value.year }}</td>
+          <td>{{ value.value }}</td>
+          <td>{{ value.value_formula }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="jumbotron">
+  <p class="lead">3. Next, determining what the company's stock price is in <b>{{years_project}} years</b>.</p>
+  <p>Stock Price = {{valuation_formula}} = <b>{{valuation}}</b></p>
+  <p class="lead">4. Finally, calculating what that stock is worth today ({{start_date}}). In otherwords, get the net present value of the stock.</p>
+  <p>Price Earnings Model Valuation = {{present_valuation_formula}} = <b>{{present_valuation}}</b></p>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,24 @@
+/* Comment out for now
+.navbar {
+  background: #FFCCCB !important;
+}
+*/
+body {
+       margin: 0;
+       padding: 0;
+   }
+
+   iframe {
+       display: block;
+       width: 100vw;
+       height: 100vh;
+       max-width: 100%;
+       margin: 0;
+       padding: 0;
+       border: 0 none;
+       box-sizing: border-box;
+   }
+
+   a {
+   color: #1C4966;
+ }

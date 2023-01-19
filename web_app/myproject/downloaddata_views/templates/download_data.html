@@ -1,0 +1,36 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="container">
+<div class="jumbotron">
+<p class="h3">Input any stock ticker to retrieve financial data</p>
+<hr class="my-4">
+<p class="lead">Note:</p>
+<ul><li>Fiscal period '2010Q1' is the earliest data period available</li>
+<li>Q4 data period will automatically pull both fourth quarter and fiscal year end data</li>
+<li><a href="{{url_for('downloaddata_views.TICKER_SEARCH')}}"><b>Click here</b></a> for the list of available stock tickers</li></ul>
+<hr class="my-4">
+{% if message %}
+<div class="alert alert-danger" role="alert">
+<p>{{message}}</p>
+</div>
+{% endif %}
+  <form method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+      <p align="left">{{ form.ticker.label }} {{ form.ticker() }}
+	    <span style="float:right;">{{ form.year.label }} {{ form.year() }}</span></p>
+      <span style="float:right;">{{ form.submit() }}</span>
+  </form>
+
+</div>
+<div class="jumbotron">
+  <p class="lead"><b>Access data via API</b></p>
+  <hr class="my-4">
+<p>Get data via following url (no API key needed): </p><ul><li><b>Format:</b> "http://financinos.com/REST/[input_ticker]_[input_fiscal-data-period]"</li>
+  <li><b>Example:</b> "https://financinos.com/REST/msft_2010Q3"</li></ul>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div class="jumbotron">
+  <p class="h3">Here is the company information for your inputted stock ticker</p>
+  <hr class="my-4">
+    {% for index,value in companies.iterrows() %}
+    <p class="lead">Company Name: {{value['name']}}</p>
+    <p class="lead">Stock Ticker: {{value.instance}}</p>
+    <p class="lead">EIN Number: {{value.ein_id}}</p>
+    <p class="lead">Address: {{value.bas1}}, {{value.cityba}}, {{value.stprba}} {{value.countryba}} {{value.zipba}}</p>
+    {% endfor %}
+    <p class="lead">Fiscal period: {{fiscal_period}} (data released on {{fiscal_date}})</p>
+
+    <div style="display: flex; justify-content: flex-end">
+      <div><form action="{{url_for('downloaddata_views.DOWNLOAD_CSV', ticker=ticker, fiscal_period=fiscal_period)}}">
+          <input type="submit" value="Download Financials" />
+      </form></div><p>&nbsp;</p>
+      <div><form action="{{url_for('downloaddata_views.DOWNLOAD_DATA')}}">
+            <input type="submit" value="New Query" />
+      </form></div>
+    </div>
+
+</div>
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>description</th>
+		<th>statement</th>
+		<th>year</th>
+		<th>quarter</th>
+        <th>value</th>
+		<th>ein_id</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for index,value in financials.iterrows() %}
+        <tr>
+          <td>{{ value.label_sec }}</td>
+          <td>{{ value.stmt }}</td>
+		  <td>{{ value.fy }}</td>
+		  <td>{{ value.fq }}</td>
+		  <td>{{ value.value }}</td>
+		  <td>{{ value.ein_id }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+{% endblock %}

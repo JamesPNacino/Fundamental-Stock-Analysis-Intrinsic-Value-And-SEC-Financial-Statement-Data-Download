@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+  <p class="lead">Listed below are the following tickers that are available in this web application. Use the search bar to lookup your desired stock</p>
+  </div>
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Company Name</th>
+    		<th>Ticker</th>
+        <th>Latest Data Available</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for index,value in ticker_table.iterrows() %}
+        <tr>
+          <td>{{ value.Company_Name }}</td>
+          <td>{{ value.Ticker }}</td>
+          <td>{{ value.Latest_Available_Data_Period }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+{% endblock %}
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+  </script>
+{% endblock %}
