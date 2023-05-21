@@ -1,6 +1,7 @@
 # Fundamental-Stock-Analysis-Intrinsic-Value-And-SEC-Financial-Statement-Data-Download
 
 ## Summary
+The purpose of this web application is for downloading financial statement data, cleaned from EDGAR's SEC data files and automating valuation models which estimate the intrinsic value of a stock price. 
 
 In this application, we will be analyzing the intrinsic value of stocks using various valuation methods. Investors such as Warren Buffet and Benjamin Graham are just a few examples of people who use a fundamental analysis approach to value stocks based upon their intrinsic value. Below I will talk about how this app works and the motivation for this type of automated analyses:
 
